@@ -24,6 +24,7 @@ module TelFormatter
       elsif SPECIAL_CODE_10_REGEXP =~ tel
         return [$1, $2]
       else
+        p "エラー１"
         return false
       end
     when 11
@@ -32,9 +33,11 @@ module TelFormatter
       elsif SPECIAL_CODE_11_REGEXP =~ tel
         return [$1, $2]
       else
+        p "エラー２"
         return false
       end
     else
+      p "エラー３"
       return false
     end
   end
