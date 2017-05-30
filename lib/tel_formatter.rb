@@ -42,7 +42,7 @@ module TelFormatter
     end
   end
 
-  def self.check(tel)
+  def self.checker(tel)
     tel = self.preprocess(tel)
     case tel.length
       when 10
