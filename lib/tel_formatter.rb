@@ -64,6 +64,7 @@ module TelFormatter
       else
         return false
     end
+
   end
 
   def self.preprocess(tel)
