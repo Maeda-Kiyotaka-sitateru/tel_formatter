@@ -18,27 +18,51 @@ module TelFormatter
   def self.split(tel)
     tel = self.preprocess(tel)
     case tel.length
-    when 10
-      if AREA_CODE_REGEXP =~ tel
-        return [$1, $2, $3]
-      elsif SPECIAL_CODE_10_REGEXP =~ tel
-        return [$1, $2]
+      when 10
+        if AREA_CODE_REGEXP =~ tel
+          return [$1, $2, $3]
+        elsif SPECIAL_CODE_10_REGEXP =~ tel
+          return [$1, $2]
+        else
+          p "エラー１"
+          return false
+        end
+      when 11
+        if CELLPHONE_CODE_REGEXP =~ tel
+          return [$1, $2, $3]
+        elsif SPECIAL_CODE_11_REGEXP =~ tel
+          return [$1, $2]
+        else
+          p "エラー２"
+          return false
+        end
       else
-        p "エラー１"
+        p "エラー３"
         return false
-      end
-    when 11
-      if CELLPHONE_CODE_REGEXP =~ tel
-        return [$1, $2, $3]
-      elsif SPECIAL_CODE_11_REGEXP =~ tel
-        return [$1, $2]
+    end
+  end
+
+  def self.check(tel)
+    tel = self.preprocess(tel)
+    case tel.length
+      when 10
+        if AREA_CODE_REGEXP =~ tel
+          return true
+        elsif SPECIAL_CODE_10_REGEXP =~ tel
+          return true
+        else
+          return false
+        end
+      when 11
+        if CELLPHONE_CODE_REGEXP =~ tel
+          return true
+        elsif SPECIAL_CODE_11_REGEXP =~ tel
+          return true
+        else
+          return false
+        end
       else
-        p "エラー２"
         return false
-      end
-    else
-      p "エラー３"
-      return false
     end
   end
 
