@@ -24,8 +24,7 @@ module TelFormatter
         elsif SPECIAL_CODE_10_REGEXP =~ tel
           return [$1, $2]
         else
-          p "エラー１"
-          return false
+          return ''
         end
       when 11
         if CELLPHONE_CODE_REGEXP =~ tel
@@ -33,38 +32,11 @@ module TelFormatter
         elsif SPECIAL_CODE_11_REGEXP =~ tel
           return [$1, $2]
         else
-          p "エラー２"
-          return false
+          return ''
         end
       else
-        p "エラー３"
-        return false
+        return ''
     end
-  end
-
-  def self.checker(tel)
-    tel = self.preprocess(tel)
-    case tel.length
-      when 10
-        if AREA_CODE_REGEXP =~ tel
-          return true
-        elsif SPECIAL_CODE_10_REGEXP =~ tel
-          return true
-        else
-          return false
-        end
-      when 11
-        if CELLPHONE_CODE_REGEXP =~ tel
-          return true
-        elsif SPECIAL_CODE_11_REGEXP =~ tel
-          return true
-        else
-          return false
-        end
-      else
-        return false
-    end
-
   end
 
   def self.preprocess(tel)
