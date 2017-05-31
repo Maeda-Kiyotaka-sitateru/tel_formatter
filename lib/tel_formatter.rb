@@ -24,7 +24,7 @@ module TelFormatter
         elsif SPECIAL_CODE_10_REGEXP =~ tel
           return [$1, $2]
         else
-          return ''
+          return ['', '', '']
         end
       when 11
         if CELLPHONE_CODE_REGEXP =~ tel
@@ -32,10 +32,10 @@ module TelFormatter
         elsif SPECIAL_CODE_11_REGEXP =~ tel
           return [$1, $2]
         else
-          return ''
+          return ['', '', '']
         end
       else
-        return ''
+        return ['', '', '']
     end
   end
 
